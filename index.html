@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <link rel="stylesheet" href="css/styles.css">
     <title>Registration form</title>
 </head>
@@ -13,7 +14,7 @@
         <div class="header-color"></div>
     </header>
     <div class="container">
-        <aside class="insidebox">
+        <aside class="horizontal-div" id="div1">
             <div class="aside_element">
                 <h1><b>Sample heading</b></h1>
                 <ol>
@@ -23,23 +24,26 @@
                 </ol>
             </div>
         </aside>
-        <aside class="insidebox1">
+        <aside class="horizontal-div" id="div2">
             <div class="form-content">
                 <h2>Create an account</h2>
                 <form action="">
                     <label for="email">Enter your email</label>
                     <input type="email" name="email" id="email">
+                    <span class="errorMessage" id="emailError"></span>
                     <label for="dob">Date of birth <span>(optional)</span></label>
                     <div class="dob-section">
                         <div class="dob-field">
                             <label for="day">Day</label>
                             <input type="number" name="day" id="day" min="1" max="31" placeholder="DD">
+                            <span class="errorMessage" id="dayError"></span>
                         </div>
                         <div class="dob-field">
 
-                            <!-- <input type="number" name="month" id="month" min="1" max="12" placeholder="MM"> -->
                             <label for="month">Month</label>
-                            <select class="year-field" name="year" id="year">
+                            <select class="month-field" name="month" id="month">
+                                <option value="00"></option>
+                                <option value="01">January</option>
                                 <option value="01">January</option>
                                 <option value="02">February</option>
                                 <option value="03">March</option>
@@ -52,14 +56,13 @@
                                 <option value="10">October</option>
                                 <option value="11">November</option>
                                 <option value="12">December</option>
-
-                                <!-- Add options for the remaining months -->
-                                <!-- Example: <option value="4">April</option> -->
                             </select>
+                            <span class="errorMessage" id="monthError"></span>
                         </div>
                         <div class="dob-field">
                             <label for="year">Year</label>
-                            <select class="month-field" name="month" id="month">
+                            <select class="year-field" name="year" id="year">
+                                <option value="00"></option>
                                 <option value="1995">1995</option>
                                 <option value="1996">1996</option>
                                 <option value="1997">1997</option>
@@ -72,14 +75,14 @@
                                 <option value="2004">2004</option>
                                 <option value="2005">2005</option>
                                 <option value="2006">2006</option>
-
-                                <!-- Add options for the remaining months -->
-                                <!-- Example: <option value="4">April</option> -->
                             </select>
+                            <span class="errorMessage" id="yearError"></span>
+
                         </div>
                     </div>
                     <label for="password">Choose a strong password</label>
                     <input type="password" name="password" id="password">
+                    <span class="errorMessage" id="passwordError"></span>
                     <label for="checkbox">Are you an agency or individual?</label>
                     <div class="radio-group">
                         <input type="radio" value="individual" name="option" id="individual">
@@ -87,6 +90,7 @@
                         <input type="radio" value="agency" name="option" id="agency">
                         <label for="agency">Agency</label>
                     </div>
+                    <span class="errorMessage" id="checkboxError"></span>
                     <input type="submit" name="submit" id="submit" value="Submit">
                 </form>
             </div>
@@ -96,6 +100,63 @@
         <div class="footer-color"></div>
         <!-- <p>&copy; 2024 Your Website Name. All rights reserved.</p> -->
     </footer>
+
+    <script>
+        function isEmail(email) {
+            var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+            return regex.test(email);
+        }
+    
+        $(document).ready(function(){
+            $('#submit').click(function (e) {
+                e.preventDefault(); // Prevent the form from submitting by default
+    
+                // Reset error messages
+                $('.errorMessage').text('');
+    
+                var errorMessage = "";
+    
+                if ($('#email').val() === "" || !isEmail($('#email').val())) {
+                    errorMessage += "Please enter a valid email.\n";
+                    $('#emailError').text('Please enter a valid email.').css('color', 'red');
+                    $('#email').css("border", "2px solid red");
+                }
+                if ($('#day').val() === "") {
+                    errorMessage += "Please enter the day.\n";
+                    $('#dayError').text('Please enter the day.').css('color', 'red');
+                    $('#day').css("border", "2px solid red");
+                }
+                if ($('#month').val() === "") {
+                    errorMessage += "Please choose a month.\n";
+                    $('#monthError').text('Please choose a month.').css('color', 'red');
+                    $('#month').css("border", "2px solid red");
+                }
+                if ($('#year').val() === "") {
+                    errorMessage += "Please choose a valid year.\n";
+                    $('#yearError').text('Please choose a valid year.').css('color', 'red');
+                    $('#year').css("border", "2px solid red");
+                }
+                if ($('#password').val() === "") {
+                    errorMessage += "Please enter the password.\n";
+                    $('#passwordError').text('Please enter the password.').css('color', 'red');
+                    $('#password').css("border", "2px solid red");
+                }
+                if (!$('input[name="option"]:checked').val()) {
+                    errorMessage += "Please select whether you are an individual or an agency.\n";
+                    $('#checkboxError').text('Please select an option.').css('color', 'red');
+                    $('#checkbox').css("transform", "scale(1.3) solid red");
+                }
+    
+                // Display error message or submit the form
+                else {
+                    // Uncomment the line below to submit the form
+                    // $('form').submit();
+                    alert("Form submitted successfully!");
+                    location.reload();
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>
