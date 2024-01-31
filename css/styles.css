@@ -1,87 +1,96 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+/* <style> */
+        body {
+            margin: 0;
+            /* display: flex; */
+            /* align-items: center; */
+            /* justify-content: center; */
+            height: 100vh;
+            margin-bottom: 50px;
+            /* background-color: #f0f0f0; */
+        }
 
-body {
-    padding: 0;
-    margin: 0;
-}
+        .square-container {
+            position: relative;
+            width: 100%;
+            /* Adjust the size of the square container */
+            height: 250px;
+            /* Adjust the size of the square container */
+            /* background-color: #ccc; */
+            overflow: hidden;
+            /* Clip the overflow */
+            /* margin-top: -450px; */
+        }
 
-.header-color{
-    background: #B8ACDA;
-    padding: 160px;
-    border-radius: 0 0 50% 50%;
-}
-
-.container {
-    background: #fff;
-    width: 60%;
-    display: flex;
-    margin: 0 auto;
-    margin-top: -250px;
-    margin-bottom: 100px;
-    justify-content: space-between;
-    clip-path: polygon(0 0, 85% 0%, 100% 15%, 100% 100%, 85% 100%, 15% 100%, 0% 85%, 0% 15%);
-    border-right: solid 4px #716e6e;
-    border-bottom:solid #716e6e;
-}
+        .circular-div {
+            position: absolute;
+            width: 120%;
+            /* 2x greater than the square container */
+            height: 250px;
+            /* 2x greater than the square container */
+            background-color: #B8ACDA;
+            border-radius: 0 0 50% 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
 
 
-.horizontal-div {
-    width: 100%;
-    height: 650px;
-    background-size: cover;
-    background-position: center;
-    
-}
-#div1{
-    background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
-        url("img/image-1.png");
-}
+        }
 
-.aside_element {
-    margin-top: 80px;
-    margin-left: 60px;
-    margin-right: 30px;
-    color: #fff;
-}
+        .custom-div {
+            /* border: 2px solid black; */
+            display: flex;
+            position: relative;
+            width: 60%;
+            height: auto;
+            margin: 0 auto;
+            margin-top: -200px;
+            /* margin-bottom: 0px; */
 
-h1 {
-    font-size: 40px;
-    text-align: center;
-    margin-bottom: 30px;
-}
+            clip-path: polygon(0 0, 85% 0%, 100% 15%, 100% 100%, 85% 100%, 15% 100%, 0% 85%, 0% 15%);
+            border-right: solid 4px #716e6e;
+            border-bottom:solid #716e6e;
+        }
 
-li {
-    font-size: 20px;
-    text-align: left;
-    margin-bottom: 10px;
-}
+        .div-content {
+            margin: 35px;
+        }
 
-#div2 {
-    width: 80%; /* Adjust the width as needed */
-    height: auto;
-    background-color: #fff;
-    margin-left: 5%;
-    margin-right: 5%;
-    margin-top: 140px;
-}
-.form-content{}
+        h1 {
+            font-size: 40px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
 
-h2 {
-    text-align: center;
-    font-weight: 900;
-    font-family: sans-serif;
-}
+        li {
+            font-size: 20px;
+            text-align: left;
+            margin-bottom: 10px;
+        }
 
-form {
-    display: flex;
-    flex-direction: column;
-}
+        h2 {
+            margin-top: 100px;
+            text-align: center;
+            font-weight: 900;
+            font-family: sans-serif;
+        }
 
-label {
+
+        .horizontal-div {
+            width: 50%;
+            /* border: 1px solid black; */
+            box-sizing: border-box;
+            background-size: cover;
+        background-position: center;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            margin: 50px;
+            margin-top: 0;
+        }
+
+        label {
     margin-top: 10px;
     color: #000000;
     font-size: 18px;
@@ -94,7 +103,7 @@ label {
     margin-top: 20px;
 }
 .dob-field {
-    flex: 1;
+    /* flex: 5; */
     /* margin-right: 10px; */
     position: relative;
 }
@@ -171,35 +180,87 @@ input[type="submit"]:hover {
     color: red;
 }
 
+        .div2 {
+            background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+                url("img/image-1.png");
+            justify-content: center;
+            align-items: center;
+            height: auto;
+            color: #fff;
+        }
+
+        .div1 {
+            background-color: #fff;
+        }
+
+        footer {
+            display: none;
+        }
+
+        @media screen and (max-width: 767px) {
+            .custom-div {
+                flex-direction: column;
+                width: 100%;
+                /* margin-top: 200px; */
+                /* margin-top: 0; */
+                border-bottom: 0;
+                border-right: 0;
+                clip-path: none;
+            }
+
+            .horizontal-div {
+                width: 100%;
+            }
 
 
-/* .footer-color p {
-    margin: 20px;
-} */
+            .div2 {
+                margin-top: 180px;
+                top: 0;
+            }
 
+            footer {
+                display: block;
+                width: 100%;
+                margin: 0 auto;
+            }
 
-/* Media Query for smaller screens */
-@media screen and (max-width: 767px) {
-    .container {
-        width: 100%;
-        flex-direction: column;
-        clip-path: none;
-    }
+            footer div {
+                
+            }
 
-    .horizontal-div {
-        width: 100%;
-        margin-bottom: 20px;
-    }
-    .header-color{
-        /* display: none; */
-        margin-top: -100px;
-        background: none;
-    }
-    #div1{
-        height: 50%;
-    }
-    #div2{
-        margin-top: 20px;
-        margin-bottom: 200px;
-    }
-}
+            header {
+                display: none;
+            }
+
+            
+
+            /*  */
+
+            .square-footer {
+            position: relative;
+            width: 100%;
+            /* Adjust the size of the square container */
+            height: 150px;
+            /* Adjust the size of the square container */
+            /* background-color: #ccc; */
+            overflow: hidden;
+            /* Clip the overflow */
+            /* margin-top: -450px; */
+        }
+
+        .circle-footer {
+            position: absolute;
+            width: 120%;
+            /* 2x greater than the square container */
+            height: 150px;
+            /* 2x greater than the square container */
+            background-color: #B8ACDA;
+            border-radius: 50% 50% 0 0;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+        }
+
+        }
+    /* </style> */

@@ -3,35 +3,37 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/styles.css">
-    <title>Registration form</title>
 </head>
 
 <body>
-    <header>
-        <div class="header-color"></div>
+
+    <header class="square-container">
+        <div class="circular-div"></div>
     </header>
-    <div class="container">
-        <aside class="horizontal-div" id="div1">
-            <div class="aside_element">
+
+    <div class="custom-div">
+
+        <div class="horizontal-div div2" id="div2">
+            <section class="div-content">
                 <h1><b>Sample heading</b></h1>
                 <ol>
                     <li>Lorem ipsum dolor sit amet consectetur </li>
                     <li>Adipisicing elit tempore dolorem</li>
                     <li>Laborum distinctio incidunt quae voluptas tempore dolorem</li>
                 </ol>
-            </div>
-        </aside>
-        <aside class="horizontal-div" id="div2">
+            </section>
+        </div>
+        <div class="horizontal-div div1" id="div1">
             <div class="form-content">
                 <h2>Create an account</h2>
                 <form action="">
                     <label for="email">Enter your email</label>
-                    <input type="email" name="email" id="email">
+                    <input type="email" name="email" id="email" autocomplete="email">
                     <span class="errorMessage" id="emailError"></span>
-                    <label for="dob">Date of birth <span>(optional)</span></label>
+                    <label>Date of birth <span>(optional)</span></label>
                     <div class="dob-section">
                         <div class="dob-field">
                             <label for="day">Day</label>
@@ -83,7 +85,7 @@
                     <label for="password">Choose a strong password</label>
                     <input type="password" name="password" id="password">
                     <span class="errorMessage" id="passwordError"></span>
-                    <label for="checkbox">Are you an agency or individual?</label>
+                    <label>Are you an agency or individual?</label>
                     <div class="radio-group">
                         <input type="radio" value="individual" name="option" id="individual">
                         <label for="individual">Individual</label>
@@ -94,12 +96,15 @@
                     <input type="submit" name="submit" id="submit" value="Submit">
                 </form>
             </div>
-        </aside>
+        </div>
     </div>
-    <footer>
-        <div class="footer-color"></div>
-        <!-- <p>&copy; 2024 Your Website Name. All rights reserved.</p> -->
+    <footer class="square-footer">
+        <div class="circle-footer">
+            <!-- <p>This is the footer.</p> -->
+        </div>
+        
     </footer>
+
 
     <script>
         function isEmail(email) {
@@ -157,6 +162,7 @@
             });
         });
     </script>
+
 </body>
 
 </html>
